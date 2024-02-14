@@ -107,4 +107,7 @@ export const DEFAULT_LEVEL: CellStatus[][] = [
     CellStatus.DISABLED,
     CellStatus.DISABLED,
   ],
+
+
+  // TODO: Implementar mas niveles
 ];

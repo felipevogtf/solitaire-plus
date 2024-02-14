@@ -1,0 +1,23 @@
+.board {
+  display: grid;
+  grid-template-columns: repeat(9, 100px);
+  gap: 10px;
+
+  &__cell {
+    background-color: lightcoral;
+    padding: 20px;
+    color: white;
+
+    &--empty {
+      background-color: lightgray;
+    }
+
+    &--taken {
+      background-color: blue;
+    }
+
+    &--suggest {
+      background-color: yellow;
+    }
+  }
+}
