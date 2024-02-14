@@ -21,4 +21,79 @@ export class Board {
     }
     return board;
   }
+
+  getPossibleMovements(cell: Cell): Cell[] {
+
+    // TODO: Mejorar codigo, hay mucha repeticion
+    
+    const possibleMovements: Cell[] = [];
+    const numRows = this.matrix.length;
+    const numCols = this.matrix[0].length;
+
+    // Verificar celda a la derecha
+    if (
+      cell.xPosition + 1 < numRows &&
+      this.matrix[cell.xPosition + 1][cell.yPosition].status ===
+        CellStatus.TAKEN
+    ) {
+      if (
+        cell.xPosition + 2 < numRows &&
+        this.matrix[cell.xPosition + 2][cell.yPosition].status ===
+          CellStatus.EMPTY
+      ) {
+        possibleMovements.push(this.matrix[cell.xPosition + 2][cell.yPosition]);
+      }
+    }
+
+    // Verificar celda a la izquierda
+    if (
+      cell.xPosition - 1 >= 0 &&
+      this.matrix[cell.xPosition - 1][cell.yPosition].status ===
+        CellStatus.TAKEN
+    ) {
+      if (
+        cell.xPosition - 2 < numRows &&
+        this.matrix[cell.xPosition - 2][cell.yPosition].status ===
+          CellStatus.EMPTY
+      ) {
+        possibleMovements.push(this.matrix[cell.xPosition - 2][cell.yPosition]);
+      }
+    }
+
+    // Verificar celda abajo
+    if (
+      cell.yPosition + 1 < numCols &&
+      this.matrix[cell.xPosition][cell.yPosition + 1].status ===
+        CellStatus.TAKEN
+    ) {
+      if (
+        cell.yPosition + 2 < numRows &&
+        this.matrix[cell.xPosition][cell.yPosition + 2].status ===
+          CellStatus.EMPTY
+      ) {
+        possibleMovements.push(this.matrix[cell.xPosition][cell.yPosition + 2]);
+      }
+    }
+
+    // Verificar celda arriba
+    if (
+      cell.yPosition - 1 >= 0 &&
+      this.matrix[cell.xPosition][cell.yPosition - 1].status ===
+        CellStatus.TAKEN
+    ) {
+      if (
+        cell.yPosition - 2 < numRows &&
+        this.matrix[cell.xPosition][cell.yPosition - 2].status ===
+          CellStatus.EMPTY
+      ) {
+        possibleMovements.push(this.matrix[cell.xPosition][cell.yPosition - 2]);
+      }
+    }
+
+    return possibleMovements;
+  }
+
+  moveCell(){
+    // TODO: Implementar funcion para mover celda y comer pieza
+  }
 }
